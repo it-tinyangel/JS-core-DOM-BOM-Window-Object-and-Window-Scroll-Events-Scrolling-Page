@@ -19,11 +19,16 @@
 	<!-- Scroll Slide Box -->
 	<div id="scrollSlideBox" class="scroll_slide--box container" role="region" aria-labelledby="scrollSlideText"
 		tabindex="0">
-		<h2 id="scrollSlideText" class="scroll_slide--text">Slide from left</h2>
-		<div id="scrollSlideLine" class="scroll_slide--line"></div>
-		<img id="scrollSlideImage" class="scroll_slide--image" src="src/workspace.jpg"
-			alt="Image of the workspace that moves from the Slide side of the screen to the center" role="img"
-			aria-label="Image of the workspace that moves from the Slide side of the screen to the center">
+		<div class="scroll_slide--box__left">
+			<h2 id="scrollSlideText" class="scroll_slide--text">Slide from left</h2>
+			<div id="scrollSlideLine" class="scroll_slide--line"></div>
+		</div>
+
+		<div class="scroll_slide--box__right">
+			<img id="scrollSlideImage" class="scroll_slide--image" src="src/workspace.jpg"
+				alt="Image of the workspace that moves from the Slide side of the screen to the center" role="img"
+				aria-label="Image of the workspace that moves from the Slide side of the screen to the center">
+		</div>
 	</div>
 
 	<!-- Scroll Up Box -->
