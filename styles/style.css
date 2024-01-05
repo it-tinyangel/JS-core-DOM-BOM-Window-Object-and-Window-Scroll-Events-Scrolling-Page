@@ -31,7 +31,7 @@ body {
 	background: var(--light-color);
 }
 
-section.scroll {
+section.scroll_section {
 	width: 100%;
 	height: 100%;
 }
