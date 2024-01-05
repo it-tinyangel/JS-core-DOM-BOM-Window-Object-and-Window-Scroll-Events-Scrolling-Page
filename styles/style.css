@@ -85,9 +85,9 @@ div.scroll_slide--box__right {
 	        align-items: flex-end;
 }
 
-/* div.scroll_slide--box__right>a {
+div.scroll_slide--box__right>a {
 	font-size: 0%;
-} */
+}
 
 h2.scroll_down--text,
 h2.scroll_up--text {
