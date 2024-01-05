@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		return newSize;
 	}
 
-	const decreaseFontSize = () => '3em';
+	function decreaseFontSize() {
+		return 3;
+	}
 
 	function handleScroll() {
 		let scrollPosition = window.scrollY;
