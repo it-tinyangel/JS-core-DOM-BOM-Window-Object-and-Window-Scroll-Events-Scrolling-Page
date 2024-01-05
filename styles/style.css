@@ -60,7 +60,7 @@ div.scroll_up--box {
 }
 
 div.scroll_slide--box {
-	padding: var(--extra-large-spacing) 0 0 0;
+	padding: var(--extra-large-spacing) 0;
 	width: 90%;
 	-webkit-box-pack: justify;
 	    -ms-flex-pack: justify;
