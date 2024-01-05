@@ -11,35 +11,34 @@
 <body>
 
 	<!-- Scroll Down Box -->
-	<section>
+	<section class="scroll_down">
 		<div id="scrollDownBox" class="scroll_down--box container" role="region" aria-labelledby="scrollDownText"
-			tabindex="0">
+			aria-label="Text moves to down" tabindex="0">
 			<h2 id="scrollDownText" class="scroll_down--text">Scroll down</h2>
 		</div>
 	</section>
 
 	<!-- Scroll Slide Box -->
-	<section>
+	<section class="scroll_slide">
 		<div id="scrollSlideBox" class="scroll_slide--box container" role="region" aria-labelledby="scrollSlideText"
-			tabindex="0">
+			aria-label="Slide moves from side to center" tabindex="0">
 			<div class="scroll_slide--box__left">
 				<h2 id="scrollSlideText" class="scroll_slide--text">"Slide from left"</h2>
 				<div id="scrollSlideLine" class="scroll_slide--line"></div>
 			</div>
 
-			<div class="scroll_slide--box__right">
-				<a target="_blank" href="src/workspace.jpg">
-					<img id="scrollSlideImage" class="scroll_slide--image" src="src/workspace.jpg"
-						alt="Image of the workspace that moves from the Slide side of the screen to the center" role="img"
-						aria-label="Image of the workspace that moves from the Slide side of the screen to the center">
+			<div class="scroll_slide--box__right" role="img" aria-labelledby="scrollSlideImage">
+				<a target="_blank" href="src/workspace.jpg" aria-label="Link to view full-size image">
+					<img id="scrollSlideImage" class="scroll_slide--image" src="src/workspace.jpg" alt="Image of the workspace">
 				</a>
 			</div>
 		</div>
 	</section>
 
 	<!-- Scroll Up Box -->
-	<section>
-		<div id="scrollUpBox" class="scroll_up--box container" role="region" aria-labelledby="scrollUpText" tabindex="0">
+	<section class="scroll_up">
+		<div id="scrollUpBox" class="scroll_up--box container" role="region" aria-labelledby="scrollUpText"
+			aria-label="Text moves to up" tabindex="0">
 			<h2 id="scrollUpText" class="scroll_up--text">Scroll up</h2>
 		</div>
 	</section>
