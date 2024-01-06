@@ -21,25 +21,31 @@ document.addEventListener('DOMContentLoaded', () => {
 		console.log('scrollPosition:', scrollPosition);
 		console.log('windowWidth:', windowWidth);
 
-		if (scrollPosition > 0 && scrollPosition <= 300) {
-			let newSizeFirstSection = increaseFontSize(scrollPosition, 1, 0, 300);
+		if (scrollPosition > 20 && scrollPosition <= 220) {
+			let newSizeFirstSection = increaseFontSize(scrollPosition, 1, 20, 220);
 			scrollDownBox.style.fontSize = `${newSizeFirstSection}em`;
 
 			console.log('scrollDownBox fontSize:', scrollDownBox.style.fontSize);
 		}
 
-		if (windowWidth < 679) {
-			if (scrollPosition > 300 && scrollPosition <= 600) {
-				let newSizeThirdSection = decreaseFontSize(scrollPosition, 300, 600);
+		if (windowWidth < 379) {
+			if (scrollPosition > 400 && scrollPosition <= 600) {
+				let newSizeThirdSection = decreaseFontSize(scrollPosition, 400, 600);
 				scrollUpBox.style.fontSize = `${newSizeThirdSection}em`;
 
 				console.log('scrollUpBox fontSize:', scrollUpBox.style.fontSize);
 			}
 		}
+		if (windowWidth >= 380 && windowWidth < 679) {
+			if (scrollPosition > 300 && scrollPosition <= 500) {
+				let newSizeThirdSection = decreaseFontSize(scrollPosition, 300, 500);
+				scrollUpBox.style.fontSize = `${newSizeThirdSection}em`;
+			}
+		}
 
 		if (windowWidth >= 679 && windowWidth < 1024) {
-			if (scrollPosition > 500 && scrollPosition <= 800) {
-				let newSizeThirdSection = decreaseFontSize(scrollPosition, 500, 800);
+			if (scrollPosition > 400 && scrollPosition <= 600) {
+				let newSizeThirdSection = decreaseFontSize(scrollPosition, 400, 600);
 				scrollUpBox.style.fontSize = `${newSizeThirdSection}em`;
 
 				console.log('scrollUpBox fontSize:', scrollUpBox.style.fontSize);
@@ -47,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		if (windowWidth >= 1024) {
-			if (scrollPosition > 800 && scrollPosition <= 1100) {
-				let newSizeThirdSection = decreaseFontSize(scrollPosition, 700, 900);
+			if (scrollPosition > 600 && scrollPosition <= 800) {
+				let newSizeThirdSection = decreaseFontSize(scrollPosition, 600, 800);
 				scrollUpBox.style.fontSize = `${newSizeThirdSection}em`;
 
 				console.log('scrollUpBox fontSize:', scrollUpBox.style.fontSize);
