@@ -1,69 +1,36 @@
-document.addEventListener('DOMContentLoaded', () => {
-	let scrollDownBox = document.getElementById('scrollDownBox');
-	let scrollUpBox = document.getElementById('scrollUpBox');
+let scrollDownBox = document.getElementById('scrollDownBox');
+let scrollUpBox = document.getElementById('scrollUpBox');
 
-	function increaseFontSize(scrollPosition, initialFontSize, rangeStart, rangeEnd) {
-		let newSize = 1 + (scrollPosition - rangeStart) / (rangeEnd - rangeStart) * (3 - 1);
-		newSize = Math.min(Math.max(newSize, 1), 3);
-		return newSize * initialFontSize;
-	}
+let scrollSlideBox = document.getElementById('scrollSlideBox');
 
-	function decreaseFontSize(scrollPosition, rangeStart, rangeEnd) {
-		let newSize = 3 - (scrollPosition - rangeStart) / (rangeEnd - rangeStart) * (3 - 1);
-		newSize = Math.min(Math.max(newSize, 1), 3);
-		return newSize;
-	}
+// let scrollDownText = document.getElementById('scrollDownText');
+// let scrollUpText = document.getElementById('scrollUpText');
 
-	function handleScroll() {
-		let scrollPosition = window.scrollY;
-		let windowWidth = window.innerWidth;
+// let scrollSlideText = document.getElementById('scrollSlideText');
+// let scrollSlideLine = document.getElementById('scrollSlideLine');
+// let scrollSlideImage = document.getElementById('scrollSlideImage');
 
-		console.log('scrollPosition:', scrollPosition);
-		console.log('windowWidth:', windowWidth);
+// console.log('window.scrollY:', window.scrollY);
+// console.log('window.innerWidth:', window.innerWidth);
+// console.log('scrollDownBox.offsetTop:', scrollDownBox.offsetTop);
+// console.log('scrollDownBox.offsetHeight:', scrollDownBox.offsetHeight);
 
-		if (scrollPosition > 20 && scrollPosition <= 220) {
-			let newSizeFirstSection = increaseFontSize(scrollPosition, 1, 20, 220);
-			scrollDownBox.style.fontSize = `${newSizeFirstSection}em`;
+function handleScroll(scrollBox,offsetValue) {
+	window.onscroll = () => {
+		let top = window.scrollY;
+		let offset = scrollBox.offsetTop + offsetValue;
+		let height = scrollBox.offsetHeight;
 
-			console.log('scrollDownBox fontSize:', scrollDownBox.style.fontSize);
+		if (top >= offset && top < offset + height) {
+			scrollBox.classList.add('show-animate');
+			console.log(scrollBox);
 		}
-
-		if (windowWidth < 379) {
-			if (scrollPosition > 400 && scrollPosition <= 600) {
-				let newSizeThirdSection = decreaseFontSize(scrollPosition, 400, 600);
-				scrollUpBox.style.fontSize = `${newSizeThirdSection}em`;
-
-				console.log('scrollUpBox fontSize:', scrollUpBox.style.fontSize);
-			}
-		}
-		if (windowWidth >= 380 && windowWidth < 679) {
-			if (scrollPosition > 300 && scrollPosition <= 500) {
-				let newSizeThirdSection = decreaseFontSize(scrollPosition, 300, 500);
-				scrollUpBox.style.fontSize = `${newSizeThirdSection}em`;
-			}
-		}
-
-		if (windowWidth >= 679 && windowWidth < 1024) {
-			if (scrollPosition > 400 && scrollPosition <= 600) {
-				let newSizeThirdSection = decreaseFontSize(scrollPosition, 400, 600);
-				scrollUpBox.style.fontSize = `${newSizeThirdSection}em`;
-
-				console.log('scrollUpBox fontSize:', scrollUpBox.style.fontSize);
-			}
-		}
-
-		if (windowWidth >= 1024) {
-			if (scrollPosition > 600 && scrollPosition <= 800) {
-				let newSizeThirdSection = decreaseFontSize(scrollPosition, 600, 800);
-				scrollUpBox.style.fontSize = `${newSizeThirdSection}em`;
-
-				console.log('scrollUpBox fontSize:', scrollUpBox.style.fontSize);
-			}
+		else {
+			scrollBox.classList.remove('show-animate');
 		}
 	}
+}
 
-	handleScroll();
-
-	window.addEventListener('resize', handleScroll);
-	window.addEventListener('scroll', handleScroll);
-});
+handleScroll(scrollDownBox, +300);
+handleScroll(scrollUpBox, +300);
+handleScroll(scrollSlideBox, -150);
