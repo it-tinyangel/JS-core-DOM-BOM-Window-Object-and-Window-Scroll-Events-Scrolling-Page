@@ -1,5 +1,12 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 :root {
-	--main-font: bold 1em Georgia, 'Times New Roman', Times, serif;
+	--main-font: bold 3em Georgia, 'Times New Roman', Times, serif;
 	--slide-font: normal 1.75em Georgia, 'Times New Roman', Times, serif;
 
 	--light-color: #fff;
@@ -9,12 +16,10 @@
 
 	--size-m: 1rem;
 	--size-s: .5rem;
-	--size-xs: .25rem;
 
 	--extra-large-spacing: calc(var(--size-m) * 2);
 	--large-spacing: var(--size-m);
 	--base-spacing: var(--size-s);
-	--small-spacing: var(--size-xs);
 }
 
 * {
@@ -34,10 +39,12 @@ body {
 section.scroll_section {
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 }
 
 div.container {
 	margin: auto;
+	min-height: 100vh;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -54,14 +61,13 @@ div.container {
 
 div.scroll_down--box,
 div.scroll_up--box {
-	height: 500px;
 	background-color: var(--primary-color);
 }
 
 div.scroll_slide--box {
 	padding: var(--extra-large-spacing) 0;
 	width: 90%;
-	height: 400px;
+	min-height: 70vh;
 	-webkit-box-pack: justify;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
@@ -112,15 +118,63 @@ div.scroll_slide--line {
 	background-color: var(--danger-color);
 }
 
-/* Media Queries */
+/* Animation styles */
+h2.scroll_down--text.animate {
+	-webkit-transform: scale(.5);
+	    -ms-transform: scale(.5);
+	        transform: scale(.5);
+	-webkit-transition: all ease 1s;
+	-o-transition: all ease 1s;
+	transition: all ease 1s;
+}
 
+div.scroll_down--box.show-animate h2.scroll_down--text.animate {
+	-webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);
+}
+
+h2.scroll_up--text.animate {
+	-webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);
+	-webkit-transition: all ease 1s;
+	-o-transition: all ease 1s;
+	transition: all ease 1s;
+}
+
+div.scroll_up--box.show-animate h2.scroll_up--text.animate {
+	-webkit-transform: scale(.5);
+	    -ms-transform: scale(.5);
+	        transform: scale(.5);
+}
+
+div.scroll_slide--box__left.animate {
+	-webkit-transform: translateX(0);
+	    -ms-transform: translateX(0);
+	        transform: translateX(0);
+	-webkit-transition: all ease 1s;
+	-o-transition: all ease 1s;
+	transition: all ease 1s;
+}
+
+
+div.scroll_slide--box.show-animate div.scroll_slide--box__left.animate {
+	-webkit-transform: translateX(50%);
+	    -ms-transform: translateX(50%);
+	        transform: translateX(50%);
+}
+
+/* Media Queries */
 @media only screen and (max-width: 679px) {
 	div.scroll_down--box {
 		padding: 250px 0 0 0;
+		padding: 80% 0 0 0;
 	}
 
 	div.scroll_up--box {
 		padding: 0 0 250px 0;
+		padding: 0 0 80% 0;
 	}
 
 	div.scroll_slide--box {
@@ -163,10 +217,12 @@ div.scroll_slide--line {
 @media only screen and (min-width: 680px) and (max-width: 1023px) {
 	div.scroll_down--box {
 		padding: 250px 0 0 0;
+		padding: 60% 0 0 0;
 	}
 
 	div.scroll_up--box {
 		padding: 0 0 250px 0;
+		padding: 0 0 60% 0;
 	}
 
 	div.scroll_slide--box {
@@ -185,20 +241,16 @@ div.scroll_slide--line {
 @media only screen and (min-width: 1024px) {
 	div.scroll_down--box {
 		padding: 350px 0 0 0;
+		padding: 40% 0 0 0;
 	}
 
 	div.scroll_up--box {
 		padding: 0 0 350px 0;
-	}
-
-	div.scroll_down--box,
-	div.scroll_up--box {
-		height: 700px;
+		padding: 0 0 40% 0;
 	}
 
 	div.scroll_slide--box {
 		max-width: 1200px;
-		height: 500px;
 	}
 
 	h2.scroll_down--text,
