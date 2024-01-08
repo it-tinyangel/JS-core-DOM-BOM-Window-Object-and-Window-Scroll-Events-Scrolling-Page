@@ -3,7 +3,6 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles/style.css">
 	<title>Interactive Scrolling Page. Animation on Scroll</title>
@@ -12,15 +11,13 @@
 <body>
 
 	<!-- Scroll Down Box -->
-	<section class="scale-down container" role="region" aria-labelledby="scrollDownText" aria-label="Text moves to down"
-		tabindex="0">
-		<h2 class="scale-down__text animate"><span>Scroll down</span></h2>
+	<section class="scale-down container" aria-labelledby="sectionScaleDown" aria-label="Text moves to down" tabindex="0">
+		<h2 id="sectionScaleDown" class="scale-down__text animate"><span>Scroll down</span></h2>
 	</section>
 
 	<!-- Scroll Slide Box -->
-	<section class="move-to container" role="region" aria-labelledby="scrollSlideText" aria-label="Slide moves to center"
-		tabindex="0">
-		<div class="move-to__left animate">
+	<section class="move-to container" aria-labelledby="sectionMove" aria-label="Slide moves to center" tabindex="0">
+		<div id="sectionMove" class="move-to__left animate">
 			<h2 class="move-to__left__text animate"><span>"Slide from left"</span></h2>
 			<div class="move-to__left__line animate"></div>
 		</div>
@@ -31,9 +28,8 @@
 	</section>
 
 	<!-- Scroll Up Box -->
-	<section class="scale-up container" role="region" aria-labelledby="scrollUpText" aria-label="Text moves to up"
-		tabindex="0">
-		<h2 class="scale-up__text animate"><span>Scroll up</span></h2>
+	<section class="scale-up container" aria-labelledby="sectionScaleUp" aria-label="Text moves to up" tabindex="0">
+		<h2 id="sectionScaleUp" class="scale-up__text animate"><span>Scroll up</span></h2>
 	</section>
 
 	<script src="js/script.js"></script>
