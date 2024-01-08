@@ -1,13 +1,8 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
-
 :root {
 	--main-font: bold 3em Georgia, 'Times New Roman', Times, serif;
-	--slide-font: normal 1.75em Georgia, 'Times New Roman', Times, serif;
+	--base-font: normal 2em Georgia, 'Times New Roman', Times, serif;
+	--small-font: normal 1.75em Georgia, 'Times New Roman', Times, serif;
+	--smallest-font: normal 1.5em Georgia, 'Times New Roman', Times, serif;
 
 	--light-color: #fff;
 	--dark-color: #000;
@@ -16,10 +11,13 @@
 
 	--size-m: 1rem;
 	--size-s: .5rem;
+	--size-xs: .25rem;
 
 	--extra-large-spacing: calc(var(--size-m) * 2);
 	--large-spacing: var(--size-m);
 	--base-spacing: var(--size-s);
+	--small-spacing: var(--size-xs);
+	--extra-small-spacing: calc(var(--size-xs) / 2);
 }
 
 * {
@@ -36,15 +34,10 @@ body {
 	background: var(--light-color);
 }
 
-section.scroll_section {
+section.container {
+	margin: auto;
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
-}
-
-div.container {
-	margin: auto;
-	min-height: 100vh;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -54,32 +47,45 @@ div.container {
 	-webkit-box-align: center;
 	    -ms-flex-align: center;
 	        align-items: center;
+	overflow: hidden;
 	-webkit-transition: font-size 0.3s ease;
 	-o-transition: font-size 0.3s ease;
 	transition: font-size 0.3s ease;
 }
 
-div.scroll_down--box,
-div.scroll_up--box {
+section.scale-down,
+section.scale-up {
+	height: 100vh;
 	background-color: var(--primary-color);
 }
 
-div.scroll_slide--box {
+section.scale-down {
+	padding: 40vh 0 0 0;
+}
+
+section.scale-up {
+	padding: 0 0 40vh 0;
+}
+
+section.move-to {
 	padding: var(--extra-large-spacing) 0;
-	width: 90%;
-	min-height: 70vh;
+	width: 80%;
+	height: 50vh;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
 	-webkit-box-pack: justify;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
 
-div.scroll_slide--box__left,
-div.scroll_slide--box__right {
+div.move-to__left,
+div.move-to__right {
 	width: 100%;
 	height: 100%;
 }
 
-div.scroll_slide--box__right {
+div.move-to__right {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -91,16 +97,16 @@ div.scroll_slide--box__right {
 	        align-items: flex-end;
 }
 
-div.scroll_slide--box__right>a {
+div.move-to__right>a {
 	font-size: 0%;
 }
 
-h2.scroll_down--text,
-h2.scroll_up--text {
+h2.scale-down__text,
+h2.scale-up__text {
 	font: var(--main-font);
 }
 
-:is(h2.scroll_down--text, h2.scroll_up--text):hover {
+:is(h2.scale-down__text, h2.scale-up__text):hover {
 	color: var(--danger-color);
 	-webkit-transition: color ease 0.3s;
 	-o-transition: color ease 0.3s;
@@ -108,77 +114,55 @@ h2.scroll_up--text {
 	cursor: pointer;
 }
 
-h2.scroll_slide--text {
-	font: var(--slide-font);
+h2.move-to__left__text {
+	font: var(--base-font);
 }
 
-div.scroll_slide--line {
+div.move-to__left__line {
 	margin: var(--base-spacing) 0 0 0;
-	height: 3px;
+	height: var(--extra-small-spacing);
 	background-color: var(--danger-color);
 }
 
+img {
+	min-width: 100%;
+}
+
+img.move-to__right__img {
+	width: 250px;
+}
+
 /* Animation styles */
-h2.scroll_down--text.animate {
-	-webkit-transform: scale(.5);
-	    -ms-transform: scale(.5);
-	        transform: scale(.5);
-	-webkit-transition: all ease 1s;
-	-o-transition: all ease 1s;
-	transition: all ease 1s;
+div.move-to__left__line.animate {
+	-webkit-transition: all ease 3s;
+	-o-transition: all ease 3s;
+	transition: all ease 3s;
 }
 
-div.scroll_down--box.show-animate h2.scroll_down--text.animate {
-	-webkit-transform: scale(1);
-	    -ms-transform: scale(1);
-	        transform: scale(1);
+section.move-to.show-animate div.move-to__left__line.animate {
+	-webkit-transform: scaleX(4.25);
+	    -ms-transform: scaleX(4.25);
+	        transform: scaleX(4.25);
 }
 
-h2.scroll_up--text.animate {
-	-webkit-transform: scale(1);
-	    -ms-transform: scale(1);
-	        transform: scale(1);
-	-webkit-transition: all ease 1s;
-	-o-transition: all ease 1s;
-	transition: all ease 1s;
+img.move-to__right__img.animate {
+	-webkit-transition: all ease 3s;
+	-o-transition: all ease 3s;
+	transition: all ease 3s;
 }
 
-div.scroll_up--box.show-animate h2.scroll_up--text.animate {
-	-webkit-transform: scale(.5);
-	    -ms-transform: scale(.5);
-	        transform: scale(.5);
-}
-
-div.scroll_slide--box__left.animate {
-	-webkit-transform: translateX(0);
-	    -ms-transform: translateX(0);
-	        transform: translateX(0);
-	-webkit-transition: all ease 1s;
-	-o-transition: all ease 1s;
-	transition: all ease 1s;
-}
-
-
-div.scroll_slide--box.show-animate div.scroll_slide--box__left.animate {
-	-webkit-transform: translateX(50%);
-	    -ms-transform: translateX(50%);
-	        transform: translateX(50%);
+section.move-to.show-animate img.move-to__right__img.animate {
+	-webkit-transform: translate(0, -40%);
+	    -ms-transform: translate(0, -40%);
+	        transform: translate(0, -40%);
+	-webkit-transform: translate3d(0, -40%, 0em);
+	        transform: translate3d(0, -40%, 0em);
 }
 
 /* Media Queries */
 @media only screen and (max-width: 679px) {
-	div.scroll_down--box {
-		padding: 250px 0 0 0;
-		padding: 80% 0 0 0;
-	}
-
-	div.scroll_up--box {
-		padding: 0 0 250px 0;
-		padding: 0 0 80% 0;
-	}
-
-	div.scroll_slide--box {
-		max-width: 600px;
+	section.move-to {
+		padding: calc(var(--extra-large-spacing)*2) 0;
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		    -ms-flex-direction: column;
@@ -188,81 +172,104 @@ div.scroll_slide--box.show-animate div.scroll_slide--box__left.animate {
 		        align-items: center;
 	}
 
-	div.scroll_slide--box__right {
+	div.move-to__right {
 		-webkit-box-pack: center;
 		    -ms-flex-pack: center;
 		        justify-content: center;
 	}
 
-	h2.scroll_down--text,
-	h2.scroll_up--text,
-	h2.scroll_slide--text {
+	h2.scale-down__text,
+	h2.scale-up__text,
+	h2.move-to__left__text {
 		text-align: center;
 	}
 
-	h2.scroll_slide--text {
-		font-size: 1.25em;
+	h2.move-to__left__text {
+		font: var(--smallest-font);
 	}
 
-	div.scroll_slide--line {
+	div.move-to__left__line {
 		margin: var(--base-spacing) auto 0;
 		width: 70px;
-	}
-
-	img.scroll_slide--image {
-		width: 250px;
 	}
 }
 
 @media only screen and (min-width: 680px) and (max-width: 1023px) {
-	div.scroll_down--box {
-		padding: 250px 0 0 0;
-		padding: 60% 0 0 0;
+	section.move-to {
+		padding: calc(var(--extra-large-spacing) * 1.5) 0;
+		max-width: 600px;
+		height: 60vh;
 	}
 
-	div.scroll_up--box {
-		padding: 0 0 250px 0;
-		padding: 0 0 60% 0;
+	h2.move-to__left__text {
+		font: var(--small-font);
 	}
 
-	div.scroll_slide--box {
-		max-width: 960px;
-	}
-
-	div.scroll_slide--line {
+	div.move-to__left__line {
 		width: 90px;
 	}
 
-	img.scroll_slide--image {
-		width: 250px;
+	/* Animation styles */
+	div.move-to__left__line.animate {
+		-webkit-transition: all ease 3s;
+		-o-transition: all ease 3s;
+		transition: all ease 3s;
+	}
+
+	section.move-to.show-animate div.move-to__left__line.animate {
+		-webkit-transform: scaleX(5.25);
+		    -ms-transform: scaleX(5.25);
+		        transform: scaleX(5.25);
+	}
+
+	img.move-to__right__img.animate {
+		-webkit-transition: all ease 3s;
+		-o-transition: all ease 3s;
+		transition: all ease 3s;
+	}
+
+	section.move-to.show-animate img.move-to__right__img.animate {
+		-webkit-transform: translate3d(-15%, -80%, 1em);
+		        transform: translate3d(-15%, -80%, 1em);
 	}
 }
 
 @media only screen and (min-width: 1024px) {
-	div.scroll_down--box {
-		padding: 350px 0 0 0;
-		padding: 40% 0 0 0;
+	section.move-to {
+		padding: calc(var(--extra-large-spacing) * 2) 0;
+		max-width: 900px;
+		height: 70vh;
 	}
 
-	div.scroll_up--box {
-		padding: 0 0 350px 0;
-		padding: 0 0 40% 0;
-	}
-
-	div.scroll_slide--box {
-		max-width: 1200px;
-	}
-
-	h2.scroll_down--text,
-	h2.scroll_up--text {
-		font-size: 1.5em;
-	}
-
-	div.scroll_slide--line {
+	div.move-to__left__line {
 		width: 100px;
 	}
 
-	img.scroll_slide--image {
+	img.move-to__right__img {
 		width: 350px;
+	}
+
+	/* Animation styles */
+	div.move-to__left__line.animate {
+		-webkit-transition: all ease 3s;
+		-o-transition: all ease 3s;
+		transition: all ease 3s;
+	}
+
+	section.move-to.show-animate div.move-to__left__line.animate {
+		-webkit-transform: scaleX(7);
+		    -ms-transform: scaleX(7);
+		        transform: scaleX(7);
+	}
+
+	img.move-to__right__img.animate {
+		-webkit-transition: all ease 3s;
+		-o-transition: all ease 3s;
+		transition: all ease 3s;
+	}
+
+	section.move-to.show-animate img.move-to__right__img.animate {
+		-webkit-transform: translate3d(-20%, -70%, 2em);
+		        transform: translate3d(-20%, -70%, 2em);
 	}
 }
