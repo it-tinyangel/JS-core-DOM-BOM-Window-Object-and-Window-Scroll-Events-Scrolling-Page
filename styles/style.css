@@ -70,7 +70,7 @@ section.scale-up {
 section.move-to {
 	padding: var(--extra-large-spacing) 0;
 	width: 80%;
-	height: 50vh;
+	height: 400px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -152,17 +152,15 @@ img.move-to__right__img.animate {
 }
 
 section.move-to.show-animate img.move-to__right__img.animate {
-	-webkit-transform: translate(0, -40%);
-	    -ms-transform: translate(0, -40%);
-	        transform: translate(0, -40%);
-	-webkit-transform: translate3d(0, -40%, 0em);
-	        transform: translate3d(0, -40%, 0em);
+	-webkit-transform: translate(0, -50%);
+	    -ms-transform: translate(0, -50%);
+	        transform: translate(0, -50%);
 }
 
 /* Media Queries */
 @media only screen and (max-width: 679px) {
 	section.move-to {
-		padding: calc(var(--extra-large-spacing)*2) 0;
+		padding: var(--extra-large-spacing) 0;
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		    -ms-flex-direction: column;
@@ -196,9 +194,8 @@ section.move-to.show-animate img.move-to__right__img.animate {
 
 @media only screen and (min-width: 680px) and (max-width: 1023px) {
 	section.move-to {
-		padding: calc(var(--extra-large-spacing) * 1.5) 0;
 		max-width: 600px;
-		height: 60vh;
+		height: 500px;
 	}
 
 	h2.move-to__left__text {
@@ -229,16 +226,15 @@ section.move-to.show-animate img.move-to__right__img.animate {
 	}
 
 	section.move-to.show-animate img.move-to__right__img.animate {
-		-webkit-transform: translate3d(-15%, -80%, 1em);
-		        transform: translate3d(-15%, -80%, 1em);
+		-webkit-transform: translate3d(-15%, -85%, 1em);
+		        transform: translate3d(-15%, -85%, 1em);
 	}
 }
 
 @media only screen and (min-width: 1024px) {
 	section.move-to {
-		padding: calc(var(--extra-large-spacing) * 2) 0;
 		max-width: 900px;
-		height: 70vh;
+		height: 600px;
 	}
 
 	div.move-to__left__line {
