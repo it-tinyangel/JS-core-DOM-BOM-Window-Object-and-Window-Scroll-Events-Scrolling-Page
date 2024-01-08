@@ -12,36 +12,28 @@
 <body>
 
 	<!-- Scroll Down Box -->
-	<section class="scroll-scale_section scroll_section">
-		<div id="scrollDownBox" class="scroll_down--box container" role="region" aria-labelledby="scrollDownText"
-			aria-label="Text moves to down" tabindex="0">
-			<h2 id="scrollDownText" class="scroll_down--text animate">Scroll down</h2>
-		</div>
+	<section class="scale-down container" role="region" aria-labelledby="scrollDownText" aria-label="Text moves to down"
+		tabindex="0">
+		<h2 class="scale-down__text animate"><span>Scroll down</span></h2>
 	</section>
 
 	<!-- Scroll Slide Box -->
-	<section class="scroll-move_section scroll_section">
-		<div id="scrollSlideBox" class="scroll_slide--box container" role="region" aria-labelledby="scrollSlideText"
-			aria-label="Slide moves from side to center" tabindex="0">
-			<div class="scroll_slide--box__left animate">
-				<h2 id="scrollSlideText" class="scroll_slide--text">"Slide from left"</h2>
-				<div id="scrollSlideLine" class="scroll_slide--line animate"></div>
-			</div>
-
-			<div class="scroll_slide--box__right animate" role="img" aria-labelledby="scrollSlideImage">
-				<a target="_blank" href="src/workspace.jpg" aria-label="Link to view full-size image">
-					<img id="scrollSlideImage" class="scroll_slide--image" src="src/workspace.jpg" alt="Image of the workspace">
-				</a>
-			</div>
+	<section class="move-to container" role="region" aria-labelledby="scrollSlideText" aria-label="Slide moves to center"
+		tabindex="0">
+		<div class="move-to__left animate">
+			<h2 class="move-to__left__text animate"><span>"Slide from left"</span></h2>
+			<div class="move-to__left__line animate"></div>
+		</div>
+		<div class="move-to__right animate">
+			<a target="_blank" href="src/workspace.jpg" aria-label="Link to view full-size image">
+				<img src="src/workspace.jpg" alt="Image of the workspace" class="move-to__right__img animate"></a>
 		</div>
 	</section>
 
 	<!-- Scroll Up Box -->
-	<section class="scroll-scale_section scroll_section">
-		<div id="scrollUpBox" class="scroll_up--box container" role="region" aria-labelledby="scrollUpText"
-			aria-label="Text moves to up" tabindex="0">
-			<h2 id="scrollUpText" class="scroll_up--text animate">Scroll up</h2>
-		</div>
+	<section class="scale-up container" role="region" aria-labelledby="scrollUpText" aria-label="Text moves to up"
+		tabindex="0">
+		<h2 class="scale-up__text animate"><span>Scroll up</span></h2>
 	</section>
 
 	<script src="js/script.js"></script>
