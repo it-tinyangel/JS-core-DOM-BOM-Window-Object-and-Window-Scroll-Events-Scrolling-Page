@@ -123,10 +123,6 @@ div.move-from__left__line {
 	background-color: var(--danger-color);
 }
 
-img {
-	min-width: 100%;
-}
-
 img.move-from__right__img {
 	width: 250px;
 }
