@@ -6,7 +6,10 @@
 
 	--light-color: #fff;
 	--dark-color: #000;
-	--primary-color: lightgrey;
+	--primary-color: linear-gradient(90deg,
+			rgb(201, 201, 201) 0%,
+			rgb(232, 232, 232) 50%,
+			rgb(201, 201, 201) 100%);
 	--danger-color: red;
 
 	--size-m: 1rem;
@@ -34,7 +37,9 @@ body {
 	background: var(--light-color);
 }
 
-section.container {
+header.container,
+main.container,
+footer.container {
 	margin: auto;
 	width: 100%;
 	height: 100%;
@@ -47,26 +52,23 @@ section.container {
 	-webkit-box-align: center;
 	    -ms-flex-align: center;
 	        align-items: center;
-	-webkit-transition: font-size 0.3s ease;
-	-o-transition: font-size 0.3s ease;
-	transition: font-size 0.3s ease;
 }
 
-section.scale-down,
-section.scale-up {
+header.scale-down,
+footer.scale-up {
 	height: 100vh;
-	background-color: var(--primary-color);
+	background: var(--primary-color);
 }
 
-section.scale-down {
+header.scale-down {
 	padding: 40vh 0 0 0;
 }
 
-section.scale-up {
+footer.scale-up {
 	padding: 0 0 40vh 0;
 }
 
-section.move-from {
+main.move-from {
 	padding: var(--extra-large-spacing) 0;
 	width: 80%;
 	height: 400px;
@@ -108,6 +110,20 @@ h2.scale-up__text {
 	transition: color ease 0.3s;
 }
 
+h2.scale-down__text.show-scale-down {
+	font-size: 1em;
+	-webkit-transition: color ease 0.3s;
+	-o-transition: color ease 0.3s;
+	transition: color ease 0.3s;
+}
+
+h2.scale-up__text.show-scale-down {
+	font: var(--main-font);
+	-webkit-transition: color ease 0.3s;
+	-o-transition: color ease 0.3s;
+	transition: color ease 0.3s;
+}
+
 :is(h2.scale-down__text, h2.scale-up__text):hover {
 	color: var(--danger-color);
 	cursor: pointer;
@@ -128,34 +144,60 @@ img.move-from__right__img {
 }
 
 /* Animation styles */
+h2.scale-down__text,
+h2.scale-up__text,
 div.move-from__left,
 h2.move-from__left__text,
 div.move-from__left__line,
 img.move-from__right__img {
-	-webkit-transition: all ease 3s;
-	-o-transition: all ease 3s;
-	transition: all ease 3s;
+	-webkit-transition: all 3s ease;
+	-o-transition: all 3s ease;
+	transition: all 3s ease;
 }
 
-section.move-from.show-animate div.move-from__left {
+h2.scale-down__text {
+	-webkit-transform: scale(.5);
+	    -ms-transform: scale(.5);
+	        transform: scale(.5);
+}
+
+header.scale-down.show-animate h2.scale-down__text {
+	-webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);
+}
+
+h2.scale-up__text {
+	-webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);
+}
+
+footer.scale-up.show-animate h2.scale-up__text {
+	-webkit-transform: scale(.5);
+	    -ms-transform: scale(.5);
+	        transform: scale(.5);
+}
+
+main.move-from.show-animate div.move-from__left {
 	-webkit-transform: translateY(.35in);
 	    -ms-transform: translateY(.35in);
 	        transform: translateY(.35in);
 }
 
-section.move-from.show-animate h2.move-from__left__text {
+main.move-from.show-animate h2.move-from__left__text {
 	-webkit-transform: none;
 	    -ms-transform: none;
 	        transform: none;
 }
 
-section.move-from.show-animate div.move-from__left__line {
+main.move-from.show-animate div.move-from__left__line {
 	-webkit-transform: translateY(-.4in) scaleX(4.5);
 	    -ms-transform: translateY(-.4in) scaleX(4.5);
 	        transform: translateY(-.4in) scaleX(4.5);
 }
 
-section.move-from.show-animate img.move-from__right__img {
+main.move-from.show-animate img.move-from__right__img {
 	-webkit-transform: translate(0, -40%);
 	    -ms-transform: translate(0, -40%);
 	        transform: translate(0, -40%);
@@ -163,7 +205,7 @@ section.move-from.show-animate img.move-from__right__img {
 
 /* Media Queries */
 @media only screen and (max-width: 679px) {
-	section.move-from {
+	main.move-from {
 		padding: var(--extra-large-spacing) 0;
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
@@ -196,7 +238,7 @@ section.move-from.show-animate img.move-from__right__img {
 	}
 
 	/* Animation styles */
-	section.move-from.show-animate h2.move-from__left__text {
+	main.move-from.show-animate h2.move-from__left__text {
 		-webkit-transform: translateY(.2in);
 		    -ms-transform: translateY(.2in);
 		        transform: translateY(.2in);
@@ -204,7 +246,7 @@ section.move-from.show-animate img.move-from__right__img {
 }
 
 @media only screen and (min-width: 680px) and (max-width: 1023px) {
-	section.move-from {
+	main.move-from {
 		max-width: 600px;
 		height: 500px;
 	}
@@ -218,25 +260,25 @@ section.move-from.show-animate img.move-from__right__img {
 	}
 
 	/* Animation styles */
-	section.move-from.show-animate div.move-from__left {
+	main.move-from.show-animate div.move-from__left {
 		-webkit-transform: translate3d(15%, 15%, 1em);
 		        transform: translate3d(15%, 15%, 1em);
 	}
 
-	section.move-from.show-animate div.move-from__left__line {
+	main.move-from.show-animate div.move-from__left__line {
 		-webkit-transform: translateX(100%) scaleX(3);
 		    -ms-transform: translateX(100%) scaleX(3);
 		        transform: translateX(100%) scaleX(3);
 	}
 
-	section.move-from.show-animate img.move-from__right__img {
+	main.move-from.show-animate img.move-from__right__img {
 		-webkit-transform: translate3d(-15%, -55%, 1em);
 		        transform: translate3d(-15%, -55%, 1em);
 	}
 }
 
 @media only screen and (min-width: 1024px) {
-	section.move-from {
+	main.move-from {
 		max-width: 900px;
 		height: 600px;
 	}
@@ -250,18 +292,18 @@ section.move-from.show-animate img.move-from__right__img {
 	}
 
 	/* Animation styles */
-	section.move-from.show-animate div.move-from__left {
+	main.move-from.show-animate div.move-from__left {
 		-webkit-transform: translate3d(20%, 5%, 2em);
 		        transform: translate3d(20%, 5%, 2em);
 	}
 
-	section.move-from.show-animate div.move-from__left__line {
+	main.move-from.show-animate div.move-from__left__line {
 		-webkit-transform: translateX(100%) scaleX(3);
 		    -ms-transform: translateX(100%) scaleX(3);
 		        transform: translateX(100%) scaleX(3);
 	}
 
-	section.move-from.show-animate img.move-from__right__img {
+	main.move-from.show-animate img.move-from__right__img {
 		-webkit-transform: translate3d(-20%, -55%, 2em);
 		        transform: translate3d(-20%, -55%, 2em);
 	}
