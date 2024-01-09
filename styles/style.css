@@ -98,34 +98,16 @@ div.move-from__right {
 	        align-items: flex-end;
 }
 
-div.move-from__right>a {
-	font-size: 0%;
-}
-
 h2.scale-down__text,
 h2.scale-up__text {
 	font: var(--main-font);
-	-webkit-transition: color ease 0.3s;
-	-o-transition: color ease 0.3s;
-	transition: color ease 0.3s;
-}
-
-h2.scale-down__text.show-scale-down {
-	font-size: 1em;
-	-webkit-transition: color ease 0.3s;
-	-o-transition: color ease 0.3s;
-	transition: color ease 0.3s;
-}
-
-h2.scale-up__text.show-scale-down {
-	font: var(--main-font);
-	-webkit-transition: color ease 0.3s;
-	-o-transition: color ease 0.3s;
-	transition: color ease 0.3s;
 }
 
 :is(h2.scale-down__text, h2.scale-up__text):hover {
 	color: var(--danger-color);
+	-webkit-transition: color .3s ease;
+	-o-transition: color .3s ease;
+	transition: color .3s ease;
 	cursor: pointer;
 }
 
@@ -150,9 +132,9 @@ div.move-from__left,
 h2.move-from__left__text,
 div.move-from__left__line,
 img.move-from__right__img {
-	-webkit-transition: all 3s ease;
-	-o-transition: all 3s ease;
-	transition: all 3s ease;
+	-webkit-transition: all 2s ease;
+	-o-transition: all 2s ease;
+	transition: all 2s ease;
 }
 
 h2.scale-down__text {
