@@ -1,20 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
-	let scrollMove = document.querySelector('.move-from');
+	let scrollScaleDown = document.querySelector('.scale-down'),
+		scrollMove = document.querySelector('.move-from'),
+		scrollScaleUp = document.querySelector('.scale-up');
 
-	function handleScroll(scrollBox, offsetValue) {
-		window.onscroll = () => {
-			let top = window.scrollY;
-			let offset = scrollBox.offsetTop + offsetValue;
-			let height = scrollBox.offsetHeight;
+	// Function to handle scroll animation for a given scrollBox
+	function handleScroll(scrollBox) {
+		let windowHeight = window.innerHeight;
+		let boxTop = scrollBox.offsetTop;
+		let boxHeight = scrollBox.offsetHeight;
+		let boxMiddle = boxTop + boxHeight / 2;
 
-			if (top >= offset && top < offset + height) {
-				scrollBox.classList.add('show-animate');
-			}
-			else {
-				scrollBox.classList.remove('show-animate');
-			}
+		// Calculate offset from window middle to scrollBox middle
+		let windowMiddle = windowHeight / 2;
+		let offset = window.scrollY + windowMiddle - boxMiddle;
+
+		if (Math.abs(offset) < windowHeight / 4) {
+			scrollBox.classList.add('show-animate');
+		} else {
+			scrollBox.classList.remove('show-animate');
 		}
 	}
 
-	handleScroll(scrollMove, -150);
+	function scrollHandler() {
+		handleScroll(scrollScaleDown);
+		handleScroll(scrollMove);
+		handleScroll(scrollScaleUp);
+	}
+
+	window.addEventListener('scroll', scrollHandler);
+
+	scrollHandler();
 });
