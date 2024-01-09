@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-	let scrollMove = document.querySelector('.move-to');
+	let scrollMove = document.querySelector('.move-from');
 
 	function handleScroll(scrollBox, offsetValue) {
 		window.onscroll = () => {
@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			if (top >= offset && top < offset + height) {
 				scrollBox.classList.add('show-animate');
-				console.log(scrollBox);
 			}
 			else {
 				scrollBox.classList.remove('show-animate');
@@ -17,5 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	handleScroll(scrollMove, -200);
+	handleScroll(scrollMove, -150);
 });
