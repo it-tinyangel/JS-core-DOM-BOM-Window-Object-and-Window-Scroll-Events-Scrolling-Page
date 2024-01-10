@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				newSizeLeftLine = (70 / 16) + (scrollPosition / sectionHeight) * (9 - 1);
 				newSizeRightBox1 = (scrollPosition % sectionHeight) / sectionHeight * (5 - 1);
 				newSizeRightBox2 = (scrollPosition % sectionHeight) / sectionHeight * (9 - 1);
-
+				// apply styles
 				moveLeftBox.style.paddingTop = `${newSizeLeftBox}rem`;
 				moveLeftBox.style.paddingLeft = `${newSizeLeftBox}rem`;
 				moveLeftLine.style.width = `${newSizeLeftLine}rem`;
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				newSizeLeftLine = (70 / 16) + (scrollPosition / sectionHeight) * (7 - 1);
 				newSizeRightBox1 = (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
 				newSizeRightBox2 = (scrollPosition % sectionHeight) / sectionHeight * (7 - 1);
-
+				// apply styles
 				moveLeftBox.style.paddingTop = `${newSizeLeftBox}rem`;
 				moveLeftBox.style.paddingLeft = `${newSizeLeftBox}rem`;
 				moveLeftLine.style.width = `${newSizeLeftLine}rem`;
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				newSizeLeftLine = (70 / 16) + (scrollPosition / sectionHeight) * (9 - 1);
 				newSizeRightBox1 = (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
 				newSizeRightBox2 = (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
-
+				// apply styles
 				moveLeftBox.style.paddingTop = `${newSizeLeftBox}rem`;
 				moveLeftLine.style.width = `${newSizeLeftLine}rem`;
 				moveLeftLine.style.marginTop = `${newSizeRightBox1}rem`;
