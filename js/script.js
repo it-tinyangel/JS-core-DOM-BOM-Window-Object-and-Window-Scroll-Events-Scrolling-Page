@@ -1,31 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-	let scrollScaleDown = document.querySelector('.scale-down');
-	let scrollMove = document.querySelector('.move-from');
-	let scrollScaleUp = document.querySelector('.scale-up');
-
+	let moveSection = document.querySelector('.move-from');
 	let scaleDownText = document.querySelector('.scale-down__text');
 	let scaleUpText = document.querySelector('.scale-up__text');
 
-	// Function to handle scroll animation for a given scrollBox
-	function handleScroll(scrollBox) {
-		let windowHeight = window.innerHeight;
-		let boxTop = scrollBox.offsetTop;
-		let boxHeight = scrollBox.offsetHeight;
-
-		// Calculation of the middle of the window when scrolling window
-		let offset = window.scrollY + windowHeight / 2 - (boxTop + boxHeight / 2);
-
-		if (Math.abs(offset) < windowHeight / 4) {
-			scrollBox.classList.add('show-animate');
-		} else {
-			scrollBox.classList.remove('show-animate');
-		}
-	}
-
 	function scrollHandler() {
-		handleScroll(scrollScaleDown);
-		handleScroll(scrollMove);
-		handleScroll(scrollScaleUp);
+		const totalSections = 2; 
+		const sectionHeight = window.innerHeight / totalSections;
+		let scrollPosition = window.scrollY;
+		let currentSection = Math.floor(scrollPosition / sectionHeight);
+
+		if (currentSection === 0) {
+			let newSize = 1 + (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
+			newSize = Math.max(Math.min(newSize, 3), 1);
+			scaleDownText.style.fontSize = `${newSize}em`;
+		}
+
+		if (currentSection === 2) {
+			let newSize = 3 - (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
+			newSize = Math.min(Math.max(newSize, 1), 3);
+			scaleUpText.style.fontSize = `${newSize}em`;
+		}
 	}
 
 	function scrollSmoothToTop() {
@@ -36,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function scrollToCenter() {
-		scrollMove.scrollIntoView({
+		moveSection.scrollIntoView({
 			behavior: 'smooth',
 			block: 'center'
 		});
@@ -46,5 +40,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	scaleUpText.addEventListener("click", scrollSmoothToTop);
 	scaleDownText.addEventListener('click', scrollToCenter);
 
-	scrollHandler();
+	scrollSmoothToTop();
 });
