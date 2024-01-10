@@ -138,21 +138,22 @@ img.move-from__right__img {
 }
 
 h2.scale-down__text {
-	-webkit-transform: scale(.5);
-	    -ms-transform: scale(.5);
-	        transform: scale(.5);
-}
-
-header.scale-down.show-animate h2.scale-down__text {
 	-webkit-transform: scale(1);
 	    -ms-transform: scale(1);
 	        transform: scale(1);
+}
+
+header.scale-down.show-animate h2.scale-down__text {
+	-webkit-transform: scale(.5);
+	    -ms-transform: scale(.5);
+	        transform: scale(.5);
 }
 
 h2.scale-up__text {
 	-webkit-transform: scale(1);
 	    -ms-transform: scale(1);
 	        transform: scale(1);
+
 }
 
 footer.scale-up.show-animate h2.scale-up__text {
