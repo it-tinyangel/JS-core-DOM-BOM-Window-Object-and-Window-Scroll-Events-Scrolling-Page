@@ -29,9 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		let ratio = scrollPosition / sectionHeight;
 
 		if (currentSection === 0) {
-			// Increase text size
-			let newSize = calculateFontSize(1, 3, scrollPosition, sectionHeight);
-			scaleDownText.style.fontSize = `${newSize}em`;
+			// Controlling the width of the browser window and increase text size
+			if (windowWidth >= 1024) {
+				let newSize = calculateFontSize(2, 3, scrollPosition, sectionHeight);
+				scaleDownText.style.fontSize = `${newSize}em`;
+
+				console.log(newSize);
+			} else if (windowWidth >= 680) {
+				let newSize = calculateFontSize(1.5, 2.5, scrollPosition, sectionHeight);
+				scaleDownText.style.fontSize = `${newSize}em`;
+
+				console.log(newSize);
+			} else {
+				let newSize = calculateFontSize(1, 2, scrollPosition, sectionHeight);
+				scaleDownText.style.fontSize = `${newSize}em`;
+
+				console.log(newSize);
+			}
 		}
 
 		if (currentSection === 1) {
@@ -57,9 +71,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		if (currentSection === 2) {
-			// Decrease text size
-			let newSize = calculateFontSize(3, 1, scrollPosition, sectionHeight);
-			scaleUpText.style.fontSize = `${newSize}em`;
+			// Controlling the width of the browser window and decrease text size
+			if (windowWidth >= 1024) {
+				let newSize = calculateFontSize(3, 2, scrollPosition, sectionHeight);
+				scaleUpText.style.fontSize = `${newSize}em`;
+
+				console.log(newSize);
+			} else if (windowWidth >= 680) {
+				let newSize = calculateFontSize(2.5, 1.5, scrollPosition, sectionHeight);
+				scaleUpText.style.fontSize = `${newSize}em`;
+
+				console.log(newSize);
+			} else {
+				let newSize = calculateFontSize(2, 1, scrollPosition, sectionHeight);
+				scaleUpText.style.fontSize = `${newSize}em`;
+
+				console.log(newSize);
+			}
 		}
 	}
 
