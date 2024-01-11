@@ -1,9 +1,13 @@
 :root {
-	--header-font: bold 1em Georgia, 'Times New Roman', Times, serif;
-	--footer-font: bold 3em Georgia, 'Times New Roman', Times, serif;
-	--base-font: normal 2em Georgia, 'Times New Roman', Times, serif;
-	--small-font: normal 1.75em Georgia, 'Times New Roman', Times, serif;
-	--smallest-font: normal 1.5em Georgia, 'Times New Roman', Times, serif;
+	--header-font-large: bold 2em Georgia, 'Times New Roman', Times, serif;
+	--footer-font-large: bold 3em Georgia, 'Times New Roman', Times, serif;
+	--header-font-base: bold 1.5em Georgia, 'Times New Roman', Times, serif;
+	--footer-font-base: bold 2.5em Georgia, 'Times New Roman', Times, serif;
+	--header-font-small: bold 1em Georgia, 'Times New Roman', Times, serif;
+	--footer-font-small: bold 2em Georgia, 'Times New Roman', Times, serif;
+	--main-font-large: normal 2em Georgia, 'Times New Roman', Times, serif;
+	--main-font-base: normal 1.75em Georgia, 'Times New Roman', Times, serif;
+	--main-font-small: normal 1.5em Georgia, 'Times New Roman', Times, serif;
 
 	--light-color: #fff;
 	--dark-color: #000;
@@ -101,14 +105,6 @@ div.move-from__right {
 	        align-items: flex-end;
 }
 
-h2.scale-down__text {
-	font: var(--header-font);
-}
-
-h2.scale-up__text {
-	font: var(--footer-font);
-}
-
 :is(h2.scale-down__text, h2.scale-up__text):hover {
 	color: var(--danger-color);
 	-webkit-transition: color .3s ease;
@@ -117,8 +113,16 @@ h2.scale-up__text {
 	cursor: pointer;
 }
 
+h2.scale-down__text {
+	font: var(--header-font-large);
+}
+
+h2.scale-up__text {
+	font: var(--footer-font-large);
+}
+
 h2.move-from__left__text {
-	font: var(--base-font);
+	font: var(--main-font-large);
 }
 
 div.move-from__left__line {
@@ -167,8 +171,16 @@ img.move-from__right__img {
 		text-align: center;
 	}
 
+	h2.scale-down__text {
+		font: var(--header-font-small);
+	}
+
+	h2.scale-up__text {
+		font: var(--footer-font-small);
+	}
+
 	h2.move-from__left__text {
-		font: var(--smallest-font);
+		font: var(--main-font-small);
 	}
 
 	div.move-from__left__line {
@@ -183,8 +195,16 @@ img.move-from__right__img {
 		height: 500px;
 	}
 
+	h2.scale-down__text {
+		font: var(--header-font-base);
+	}
+
+	h2.scale-up__text {
+		font: var(--footer-font-base);
+	}
+
 	h2.move-from__left__text {
-		font: var(--small-font);
+		font: var(--main-font-base);
 	}
 
 	div.move-from__left__line {
