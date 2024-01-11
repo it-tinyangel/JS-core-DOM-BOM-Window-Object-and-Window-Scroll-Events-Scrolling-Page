@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	let moveLeftLine = document.querySelector('.move-from__left__line');
 	let moveRightBox = document.querySelector('.move-from__right');
 
+	function calculateSizeValue(startValue, endValue, ratio) {
+		return startValue + ratio * (endValue - startValue);
+	}
+
+	function calculateFontSize(startSize, endSize, scrollPosition, sectionHeight) {
+		return startSize - (scrollPosition % sectionHeight) / sectionHeight * (startSize - endSize);
+	}
+
 	function scrollHandler() {
 		const totalSections = 2;
 		const sectionHeight = window.innerHeight / totalSections;
@@ -16,53 +24,41 @@ document.addEventListener('DOMContentLoaded', () => {
 		let currentSection = Math.floor(scrollPosition / sectionHeight);
 
 		let windowWidth = window.innerWidth;
-		let newSizeLeftBox, newSizeLeftLine, newSizeRightBox1, newSizeRightBox2;
+
+		// Ratio relative to the scroll height of the section
+		let ratio = scrollPosition / sectionHeight;
 
 		if (currentSection === 0) {
-			let newSize = 1 + (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
-			newSize = Math.min(Math.max(newSize, 1), 3);
+			// Increase text size
+			let newSize = calculateFontSize(1, 3, scrollPosition, sectionHeight);
 			scaleDownText.style.fontSize = `${newSize}em`;
 		}
 
 		if (currentSection === 1) {
-			if (windowWidth >= 1200) {
-				newSizeLeftBox = (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
-				newSizeLeftLine = (70 / 16) + (scrollPosition / sectionHeight) * (9 - 1);
-				newSizeRightBox1 = (scrollPosition % sectionHeight) / sectionHeight * (5 - 1);
-				newSizeRightBox2 = (scrollPosition % sectionHeight) / sectionHeight * (9 - 1);
-				// apply styles
-				moveLeftBox.style.paddingTop = `${newSizeLeftBox}rem`;
-				moveLeftBox.style.paddingLeft = `${newSizeLeftBox}rem`;
-				moveLeftLine.style.width = `${newSizeLeftLine}rem`;
-				moveRightBox.style.paddingRight = `${newSizeRightBox1}rem`;
-				moveRightBox.style.paddingBottom = `${newSizeRightBox2}rem`;
-			} else if (windowWidth >= 768) {
-				newSizeLeftBox = (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
-				newSizeLeftLine = (70 / 16) + (scrollPosition / sectionHeight) * (7 - 1);
-				newSizeRightBox1 = (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
-				newSizeRightBox2 = (scrollPosition % sectionHeight) / sectionHeight * (7 - 1);
-				// apply styles
-				moveLeftBox.style.paddingTop = `${newSizeLeftBox}rem`;
-				moveLeftBox.style.paddingLeft = `${newSizeLeftBox}rem`;
-				moveLeftLine.style.width = `${newSizeLeftLine}rem`;
-				moveRightBox.style.paddingRight = `${newSizeRightBox1}rem`;
-				moveRightBox.style.paddingBottom = `${newSizeRightBox2}rem`;
+			// Controlling the width of the browser window and setting the appropriate dimensions
+			if (windowWidth >= 1024) {
+				moveLeftBox.style.paddingTop = `${calculateSizeValue(0, 2.5, ratio)}rem`;
+				moveLeftBox.style.paddingLeft = `${calculateSizeValue(0, 2.25, ratio)}rem`;
+				moveLeftLine.style.width = `${calculateSizeValue(1, 10.7, ratio)}rem`;
+				moveRightBox.style.paddingRight = `${calculateSizeValue(0, 2.25, ratio)}rem`;
+				moveRightBox.style.paddingBottom = `${calculateSizeValue(0, 4, ratio)}rem`;
+			} else if (windowWidth >= 680) {
+				moveLeftBox.style.paddingTop = `${calculateSizeValue(0, 2, ratio)}rem`;
+				moveLeftBox.style.paddingLeft = `${calculateSizeValue(0, 1, ratio)}rem`;
+				moveLeftLine.style.width = `${calculateSizeValue(1, 7.7, ratio)}rem`;
+				moveRightBox.style.paddingRight = `${calculateSizeValue(0, 1, ratio)}rem`;
+				moveRightBox.style.paddingBottom = `${calculateSizeValue(0, 3, ratio)}rem`;
 			} else {
-				newSizeLeftBox = (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
-				newSizeLeftLine = (70 / 16) + (scrollPosition / sectionHeight) * (9 - 1);
-				newSizeRightBox1 = (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
-				newSizeRightBox2 = (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
-				// apply styles
-				moveLeftBox.style.paddingTop = `${newSizeLeftBox}rem`;
-				moveLeftLine.style.width = `${newSizeLeftLine}rem`;
-				moveLeftLine.style.marginTop = `${newSizeRightBox1}rem`;
-				moveRightBox.style.paddingBottom = `${newSizeRightBox2}rem`;
+				moveLeftBox.style.paddingTop = `${calculateSizeValue(0, 1, ratio)}rem`;
+				moveLeftLine.style.width = `${calculateSizeValue(1, 7, ratio)}rem`;
+				moveLeftLine.style.marginTop = `${calculateSizeValue(0, 1, ratio)}rem`;
+				moveRightBox.style.paddingBottom = `${calculateSizeValue(0, 1.75, ratio)}rem`;
 			}
 		}
 
 		if (currentSection === 2) {
-			let newSize = 3 - (scrollPosition % sectionHeight) / sectionHeight * (3 - 1);
-			newSize = Math.min(Math.max(newSize, 1), 3);
+			// Decrease text size
+			let newSize = calculateFontSize(3, 1, scrollPosition, sectionHeight);
 			scaleUpText.style.fontSize = `${newSize}em`;
 		}
 	}
