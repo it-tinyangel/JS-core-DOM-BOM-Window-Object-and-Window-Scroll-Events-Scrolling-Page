@@ -1,43 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-	let moveSection = document.querySelector('.move-from');
+	const moveSection = document.querySelector('.move-from');
+	const scaleDownText = document.querySelector('.scale-down__text');
+	const scaleUpText = document.querySelector('.scale-up__text');
+	const moveLeftBox = document.querySelector('.move-from__left');
+	const moveLeftLine = document.querySelector('.move-from__left__line');
+	const moveRightBox = document.querySelector('.move-from__right');
 
-	let scaleDownText = document.querySelector('.scale-down__text');
-	let scaleUpText = document.querySelector('.scale-up__text');
+	scrollToTop();
 
-	let moveLeftBox = document.querySelector('.move-from__left');
-	let moveLeftLine = document.querySelector('.move-from__left__line');
-	let moveRightBox = document.querySelector('.move-from__right');
-
-	function calculateSizeValue(startValue, endValue, ratio) {
-		return startValue + ratio * (endValue - startValue);
-	}
-
-	function calculateFontSize(startSize, endSize, scrollPosition, sectionHeight) {
-		return startSize - (scrollPosition % sectionHeight) / sectionHeight * (startSize - endSize);
-	}
+	window.addEventListener('scroll', scrollHandler);
+	scaleDownText.addEventListener('click', scrollToCenter);
+	scaleUpText.addEventListener("click", scrollToTop);
 
 	function scrollHandler() {
 		const totalSections = 2;
 		const sectionHeight = window.innerHeight / totalSections;
 
-		let scrollPosition = window.scrollY;
-		let currentSection = Math.floor(scrollPosition / sectionHeight);
+		const scrollPosition = window.scrollY;
+		const currentSection = Math.floor(scrollPosition / sectionHeight);
 
-		let windowWidth = window.innerWidth;
+		const windowWidth = window.innerWidth;
 
-		// Ratio relative to the scroll height of the section
-		let ratio = scrollPosition / sectionHeight;
+		const ratio = scrollPosition / sectionHeight; // Ratio relative to the scroll height of the section
 
 		if (currentSection === 0) {
 			// Controlling the width of the browser window and increase text size
 			if (windowWidth >= 1024) {
-				let newSize = calculateFontSize(2, 3, scrollPosition, sectionHeight);
+				const newSize = calculateFontSize(2, 3, scrollPosition, sectionHeight);
 				scaleDownText.style.fontSize = `${newSize}em`;
 			} else if (windowWidth >= 680) {
-				let newSize = calculateFontSize(1.5, 2.5, scrollPosition, sectionHeight);
+				const newSize = calculateFontSize(1.5, 2.5, scrollPosition, sectionHeight);
 				scaleDownText.style.fontSize = `${newSize}em`;
 			} else {
-				let newSize = calculateFontSize(1, 2, scrollPosition, sectionHeight);
+				const newSize = calculateFontSize(1, 2, scrollPosition, sectionHeight);
 				scaleDownText.style.fontSize = `${newSize}em`;
 			}
 		}
@@ -67,23 +62,24 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (currentSection === 2) {
 			// Controlling the width of the browser window and decrease text size
 			if (windowWidth >= 1024) {
-				let newSize = calculateFontSize(3, 2, scrollPosition, sectionHeight);
+				const newSize = calculateFontSize(3, 2, scrollPosition, sectionHeight);
 				scaleUpText.style.fontSize = `${newSize}em`;
 			} else if (windowWidth >= 680) {
-				let newSize = calculateFontSize(2.5, 1.5, scrollPosition, sectionHeight);
+				const newSize = calculateFontSize(2.5, 1.5, scrollPosition, sectionHeight);
 				scaleUpText.style.fontSize = `${newSize}em`;
 			} else {
-				let newSize = calculateFontSize(2, 1, scrollPosition, sectionHeight);
+				const newSize = calculateFontSize(2, 1, scrollPosition, sectionHeight);
 				scaleUpText.style.fontSize = `${newSize}em`;
 			}
 		}
 	}
 
-	function scrollToTop() {
-		window.scroll({
-			top: 0,
-			behavior: 'smooth'
-		});
+	function calculateFontSize(startSize, endSize, scrollPosition, sectionHeight) {
+		return startSize - (scrollPosition % sectionHeight) / sectionHeight * (startSize - endSize);
+	}
+
+	function calculateSizeValue(startValue, endValue, ratio) {
+		return startValue + ratio * (endValue - startValue);
 	}
 
 	function scrollToCenter() {
@@ -93,9 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	window.addEventListener('scroll', scrollHandler);
-	scaleUpText.addEventListener("click", scrollToTop);
-	scaleDownText.addEventListener('click', scrollToCenter);
-
-	scrollToTop();
+	function scrollToTop() {
+		window.scroll({
+			top: 0,
+			behavior: 'smooth'
+		});
+	}
 });
